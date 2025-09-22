@@ -210,7 +210,51 @@ function registerIpcHandlers({ store, dropbox, windows, decideAndSync, walkLocal
   });
 
   ipcMain.on("close-window", () => {
-    windows.mainWindow?.close();
+    // Cleanup function to properly terminate all processes and ports
+    console.log("Initiating complete application shutdown...");
+    
+    // Set the quitting flag to allow proper window closure
+    const { app } = require("electron");
+    app.isQuitting = true;
+    
+    // Close all running game processes
+    if (running && running.size > 0) {
+      console.log("Terminating running game processes...");
+      running.forEach((proc, gameName) => {
+        if (proc && !proc.killed) {
+          console.log(`Killing process for game: ${gameName}`);
+          proc.kill('SIGTERM');
+        }
+      });
+      running.clear();
+    }
+    
+    // Close auth server if running
+    if (authServer) {
+      console.log("Closing auth server...");
+      authServer.close();
+      authServer = null;
+    }
+    
+    // Destroy tray icon
+    const mainModule = require("../main");
+    const tray = mainModule.tray();
+    if (tray && !tray.isDestroyed()) {
+      console.log("Destroying tray icon...");
+      tray.destroy();
+    }
+    
+    // Close the main window and quit the application
+    if (windows.mainWindow) {
+      windows.mainWindow.destroy();
+    }
+    
+    // Force quit the entire application
+    setTimeout(() => {
+      console.log("Force quitting application...");
+      app.quit();
+      process.exit(0);
+    }, 500);
   });
 
   // --- Folders & Paths ---

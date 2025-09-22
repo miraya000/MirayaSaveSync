@@ -14,6 +14,9 @@ const REDIRECT_URI = "http://localhost:4567/auth/callback";
 const store = new Store({ name: "MirayaSaveSync" });
 let tray = null;
 
+// Export tray for access from other modules
+module.exports = { tray: () => tray };
+
 const windows = {
   mainWindow: null,
 };
@@ -44,8 +47,9 @@ function createWindow() {
 
   // Modifikasi event 'close'
   windows.mainWindow.on("close", (event) => {
-    // Jika app.isQuitting diset (dari menu tray), biarkan jendela tertutup.
+    // Jika app.isQuitting diset (dari close button atau menu tray), biarkan jendela tertutup.
     if (app.isQuitting) {
+      console.log("App is quitting, allowing window to close...");
       return;
     }
     // Jika tidak, sembunyikan jendela ke tray.
