@@ -482,7 +482,7 @@ function initDownloadButton() {
              setTimeout(() => {
                  // Direct link to release folder
                  const link = document.createElement('a');
-                 link.href = 'https://github.com/yourusername/game-sync-electron/releases'; // Replace with your actual GitHub releases URL
+                 link.href = 'https://github.com/miraya000/MirayaSaveSync/releases'; // Replace with your actual GitHub releases URL
                  link.target = '_blank';
                  link.click();
                  
