@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Sync Electron - Sinkronisasi Game Otomatis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-gamepad"></i>
+                <span>Game Sync</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Fitur</a>
+                <a href="#download">Download</a>
+                <a href="#about">Tentang</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Sinkronisasi Game <span class="gradient-text">Otomatis</span>
+                </h1>
+                <p class="hero-description">
+                    Game Sync Electron memungkinkan Anda menyinkronkan save game dan pengaturan game secara otomatis ke cloud storage. Tidak perlu khawatir kehilangan progress game lagi!
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/miraya000/game-sync-electron/releases" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download Gratis
+                    </a>
+                    <a href="https://github.com/miraya000/game-sync-electron" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        Lihat di GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="app-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="mockup-title">Game Sync Electron</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="game-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Cyberpunk 2077</span>
+                            <span class="status synced">✓ Tersinkron</span>
+                        </div>
+                        <div class="game-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>The Witcher 3</span>
+                            <span class="status syncing">⟳ Sinkronisasi...</span>
+                        </div>
+                        <div class="game-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Elden Ring</span>
+                            <span class="status synced">✓ Tersinkron</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Fitur Unggulan</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Sinkronisasi Otomatis</h3>
+                        <p>Save game Anda akan otomatis tersinkron ke cloud storage seperti Dropbox tanpa perlu intervensi manual.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Backup Aman</h3>
+                        <p>Data game Anda akan tersimpan dengan aman di cloud dan dapat dipulihkan kapan saja.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Multi Platform</h3>
+                        <p>Sinkronkan game Anda antar komputer dengan mudah. Main di rumah, lanjutkan di kantor.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3>Mudah Digunakan</h3>
+                        <p>Interface yang intuitif dan mudah digunakan. Setup sekali, sinkronisasi selamanya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download">
+            <div class="container">
+                <h2 class="section-title">Download Sekarang</h2>
+                <p class="section-description">
+                    Game Sync Electron tersedia gratis dan open source. Download versi terbaru dari GitHub.
+                </p>
+                <div class="download-buttons">
+                    <a href="https://github.com/miraya000/game-sync-electron/releases/latest" class="btn btn-primary btn-large">
+                        <i class="fas fa-download"></i>
+                        Download untuk Windows
+                    </a>
+                </div>
+                <div class="download-info">
+                    <p>
+                        <i class="fas fa-info-circle"></i>
+                        Versi terbaru akan selalu tersedia di halaman releases GitHub
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Tentang Game Sync Electron</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Game Sync Electron adalah aplikasi desktop yang dibuat dengan teknologi Electron dan React. 
+                            Aplikasi ini dirancang untuk memudahkan para gamer dalam menyinkronkan save game dan 
+                            pengaturan game ke cloud storage.
+                        </p>
+                        <p>
+                            Dengan Game Sync Electron, Anda tidak perlu khawatir kehilangan progress game saat 
+                            berganti komputer atau mengalami masalah hardware. Semua data game Anda akan tersimpan 
+                            aman di cloud dan dapat diakses kapan saja.
+                        </p>
+                        <div class="tech-stack">
+                            <h4>Teknologi yang Digunakan:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Electron</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Dropbox API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Gratis</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Open</div>
+                            <div class="stat-label">Source</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Cross</div>
+                            <div class="stat-label">Platform</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Game Sync Electron</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/miraya000/game-sync-electron">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://github.com/miraya000/game-sync-electron/issues">
+                        <i class="fas fa-bug"></i>
+                        Report Bug
+                    </a>
+                    <a href="https://github.com/miraya000/game-sync-electron/releases">
+                        <i class="fas fa-download"></i>
+                        Releases
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Game Sync Electron. Open Source Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
