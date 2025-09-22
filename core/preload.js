@@ -50,8 +50,20 @@ contextBridge.exposeInMainWorld("electronAPI", {
   },
 
   // Window Controls
-  minimizeWindow: () => ipcRenderer.send("minimize-window"),
-  maximizeRestoreWindow: () => ipcRenderer.send("maximize-restore-window"),
-  closeWindow: () => ipcRenderer.send("close-window"),
-  hideToTray: () => ipcRenderer.send("hide-to-tray"), // <-- Tambahkan ini
+  minimizeWindow: () => {
+    console.log("[Preload] Minimize window called");
+    ipcRenderer.send("minimize-window");
+  },
+  maximizeRestoreWindow: () => {
+    console.log("[Preload] Maximize/restore window called");
+    ipcRenderer.send("maximize-restore-window");
+  },
+  closeWindow: () => {
+    console.log("[Preload] Close window called");
+    ipcRenderer.send("close-window");
+  },
+  hideToTray: () => {
+    console.log("[Preload] Hide to tray called");
+    ipcRenderer.send("hide-to-tray");
+  },
 });

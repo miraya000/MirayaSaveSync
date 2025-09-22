@@ -198,10 +198,12 @@ function registerIpcHandlers({ store, dropbox, windows, decideAndSync, walkLocal
 
   // --- Window Controls ---
   ipcMain.on("minimize-window", () => {
+    console.log("[IPC] Minimize window received");
     windows.mainWindow?.minimize();
   });
 
   ipcMain.on("maximize-restore-window", () => {
+    console.log("[IPC] Maximize/restore window received");
     if (windows.mainWindow?.isMaximized()) {
       windows.mainWindow.restore();
     } else {
@@ -210,12 +212,10 @@ function registerIpcHandlers({ store, dropbox, windows, decideAndSync, walkLocal
   });
 
   ipcMain.on("close-window", () => {
+    console.log("[IPC] Close window received");
+    
     // Cleanup function to properly terminate all processes and ports
     console.log("Initiating complete application shutdown...");
-    
-    // Set the quitting flag to allow proper window closure
-    const { app } = require("electron");
-    app.isQuitting = true;
     
     // Close all running game processes
     if (running && running.size > 0) {
@@ -236,25 +236,9 @@ function registerIpcHandlers({ store, dropbox, windows, decideAndSync, walkLocal
       authServer = null;
     }
     
-    // Destroy tray icon
-    const mainModule = require("../main");
-    const tray = mainModule.tray();
-    if (tray && !tray.isDestroyed()) {
-      console.log("Destroying tray icon...");
-      tray.destroy();
-    }
-    
-    // Close the main window and quit the application
-    if (windows.mainWindow) {
-      windows.mainWindow.destroy();
-    }
-    
-    // Force quit the entire application
-    setTimeout(() => {
-      console.log("Force quitting application...");
-      app.quit();
-      process.exit(0);
-    }, 500);
+    // Force quit the application
+    const { app } = require("electron");
+    app.quit();
   });
 
   // --- Folders & Paths ---
@@ -542,7 +526,16 @@ function registerIpcHandlers({ store, dropbox, windows, decideAndSync, walkLocal
 
     authServer.listen(4567, "127.0.0.1", () => {
       const authUrl = `https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&token_access_type=offline&force_reapprove=true`;
-      shell.openExternal(authUrl);
+      console.log("[Auth] Opening browser with URL:", authUrl);
+      
+      // Try to open external browser with error handling
+      shell.openExternal(authUrl).then(() => {
+        console.log("[Auth] Browser opened successfully");
+      }).catch((error) => {
+        console.error("[Auth] Failed to open browser:", error);
+        // Fallback: try to notify the renderer process about the URL
+        windows.mainWindow?.webContents.send("auth-url-ready", authUrl);
+      });
     });
   }
 
