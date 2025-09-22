@@ -1,0 +1,33 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 100vh;
+  color: var(--muted, #a6b3c2);
+}
+
+.circular-loader {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.circular-loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.loader-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}

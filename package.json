@@ -1,0 +1,38 @@
+{
+  "name": "miraya-save-sync",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"cd ui && npm run dev\" \"wait-on http://localhost:5175 && cross-env ELECTRON_START_URL=http://localhost:5175 electron .\"",
+    "build:ui": "cd ui && npm run build",
+    "build": "npm run build:ui && electron-builder"
+  },
+  "dependencies": {
+    "dropbox": "10.34.0",
+    "electron-store": "8.2.0",
+    "isomorphic-fetch": "3.0.0",
+    "node-fetch": "2.6.7",
+    "ps-list": "^8.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "8.0.0",
+    "cross-env": "10.0.0",
+    "electron": "30.5.1",
+    "electron-builder": "24.13.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.mirayasavesync.app",
+    "productName": "MirayaSaveSync",
+    "files": [
+      "main.js",
+      "build/icon.png",
+      "core/**/*",
+      "ui/dist/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    }
+  }
+}
