@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initCounterAnimation();
     initFormHandling();
+    initDownloadButton();
 });
 
 // Navigation functionality
@@ -457,3 +458,46 @@ window.addEventListener('load', function() {
         }, 500);
     }, 1000);
 });
+
+// Download button functionality
+function initDownloadButton() {
+    const downloadBtn = document.querySelector('.download-btn-main');
+    
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Show download starting message
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting Download...';
+            this.disabled = true;
+            
+            // Simulate download process
+             setTimeout(() => {
+                 // Direct link to release folder
+                 const link = document.createElement('a');
+                 link.href = 'https://github.com/yourusername/game-sync-electron/releases'; // Replace with your actual GitHub releases URL
+                 link.target = '_blank';
+                 link.click();
+                 
+                 // Show success message
+                 this.innerHTML = '<i class="fas fa-check"></i> Redirecting...';
+                 this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                 
+                 // Reset button after 2 seconds
+                 setTimeout(() => {
+                     this.innerHTML = originalText;
+                     this.style.background = '';
+                     this.disabled = false;
+                 }, 2000);
+                 
+             }, 800);
+        });
+    }
+}
